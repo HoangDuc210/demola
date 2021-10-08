@@ -16,7 +16,7 @@ class MusicsController extends Controller
     {
 
         // $music = new CustomerCollection(Music::paginate(5));
-        return 1;
+        return 12;
 
     }
 
