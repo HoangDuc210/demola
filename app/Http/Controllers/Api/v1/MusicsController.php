@@ -26,14 +26,6 @@ class MusicsController extends Controller
         // $music = new CustomerCollection(Music::paginate(5));
         // return $music;
 
-        try {
-            $dbh = new PDO('postgres://ncvzholdqlfiau:d95404fe981f6322187325dfc404dd5535c7c50fc71793cf317c91e11af2ba8a@ec2-54-172-169-87.compute-1.amazonaws.com:5432/d5rp8npmc2ap7g');
-            echo "PDO connection object created";
-         }
-         catch(PDOException $e)
-         {
-               echo $e->getMessage();
-         }
     }
 
     /**
