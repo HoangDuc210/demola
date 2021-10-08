@@ -4,9 +4,6 @@ namespace App\Http\Controllers\Api\v1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Music;
-use App\Http\Resources\CustomerResource;
-use App\Http\Resources\CustomerCollection;
 
 class MusicsController extends Controller
 {
