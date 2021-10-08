@@ -23,8 +23,8 @@ class MusicsController extends Controller
         //     var_dump($e);die;
         //     die("Could not connect to the database.  Please check your configuration. error:" . $e );
         // }
-        // $music = new CustomerCollection(Music::paginate(5));
-        // return $music;
+        $music = new CustomerCollection(Music::paginate(5));
+        return $music;
 
     }
 
