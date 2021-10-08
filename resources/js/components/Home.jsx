@@ -7,7 +7,8 @@ import ReactPaginate from "react-paginate";
 const Home = () => {
 
     const [customers, setCustomers] = useState([]);
-    const apiUrl = "http://localhost:8000/api/v1/musics";
+    const domain = window.location.origin;
+    const apiUrl = domain+"/api/v1/musics";
     const getCusstomers = async () => {
         const res = await axios.get(apiUrl);
         setCustomers(res.data.data);
