@@ -1,23 +1,24 @@
 <?php
-   
+
 namespace App\Http\Controllers\API;
-   
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use Validator;
 use App\Models\Blog;
-use App\Http\Resources\Blog as BlogResource;
-   
+use App\Http\Resources\BlogResource;
+use App\Http\Resources\BlogCollection;
+
 class BlogController extends BaseController
 {
 
     public function index()
     {
-        $blogs = Blog::all();
-        return $this->sendResponse(BlogResource::collection($blogs), 'Posts fetched.');
+        $Blog = new BlogCollection(Blog::paginate(5));
+        return $Blog;
     }
 
-    
+
     public function store(Request $request)
     {
         $input = $request->all();
@@ -26,13 +27,13 @@ class BlogController extends BaseController
             'description' => 'required'
         ]);
         if($validator->fails()){
-            return $this->sendError($validator->errors());       
+            return $this->sendError($validator->errors());
         }
         $blog = Blog::create($input);
         return $this->sendResponse(new BlogResource($blog), 'Post created.');
     }
 
-   
+
     public function show($id)
     {
         $blog = Blog::find($id);
@@ -41,7 +42,7 @@ class BlogController extends BaseController
         }
         return $this->sendResponse(new BlogResource($blog), 'Post fetched.');
     }
-    
+
 
     public function update(Request $request, Blog $blog)
     {
@@ -53,16 +54,16 @@ class BlogController extends BaseController
         ]);
 
         if($validator->fails()){
-            return $this->sendError($validator->errors());       
+            return $this->sendError($validator->errors());
         }
 
         $blog->title = $input['title'];
         $blog->description = $input['description'];
         $blog->save();
-        
+
         return $this->sendResponse(new BlogResource($blog), 'Post updated.');
     }
-   
+
     public function destroy(Blog $blog)
     {
         $blog->delete();
