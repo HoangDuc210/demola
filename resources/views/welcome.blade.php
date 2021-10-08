@@ -13,7 +13,6 @@
 <body>
 <div id="app">
 
-    sdfhajshdaskdl asdh ahsdl
 </div>
 
 <script src="{{ asset('js/app.js') }}"></script>
