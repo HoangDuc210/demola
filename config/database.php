@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,8 +48,8 @@ return [
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
+            'database' => env('DB_DATABASE', 'music'),
+            'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
@@ -65,12 +65,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'url' => env('DATABASE_URL','postgres://ncvzholdqlfiau:d95404fe981f6322187325dfc404dd5535c7c50fc71793cf317c91e11af2ba8a@ec2-54-172-169-87.compute-1.amazonaws.com:5432/d5rp8npmc2ap7g'),
+            'host' => env('DB_HOST', 'ec2-54-172-169-87.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => env('DB_DATABASE', 'd5rp8npmc2ap7g'),
+            'username' => env('DB_USERNAME', 'ncvzholdqlfiau'),
+            'password' => env('DB_PASSWORD', 'd95404fe981f6322187325dfc404dd5535c7c50fc71793cf317c91e11af2ba8a'),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
