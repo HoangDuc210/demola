@@ -17,12 +17,7 @@ class MusicsController extends Controller
      */
     public function index()
     {
-        // try {
-        //     DB::connection()->getPdo();
-        // } catch (\Exception $e) {
-        //     var_dump($e);die;
-        //     die("Could not connect to the database.  Please check your configuration. error:" . $e );
-        // }
+
         // $music = new CustomerCollection(Music::paginate(5));
         return 1;
 
