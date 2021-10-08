@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Music;
 use App\Http\Resources\CustomerResource;
 use App\Http\Resources\CustomerCollection;
-use Illuminate\Support\Facades\DB;
 
 class MusicsController extends Controller
 {
@@ -18,14 +17,14 @@ class MusicsController extends Controller
      */
     public function index()
     {
-        try {
-            DB::connection()->getPdo();
-        } catch (\Exception $e) {
-            var_dump($e);die;
-            die("Could not connect to the database.  Please check your configuration. error:" . $e );
-        }
-        // $music = new CustomerCollection(Music::paginate(5));
-        // return $music;
+        // try {
+        //     DB::connection()->getPdo();
+        // } catch (\Exception $e) {
+        //     var_dump($e);die;
+        //     die("Could not connect to the database.  Please check your configuration. error:" . $e );
+        // }
+        $music = new CustomerCollection(Music::paginate(5));
+        return $music;
     }
 
     /**
