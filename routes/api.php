@@ -16,17 +16,3 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-
-Route::prefix('v1')->group(function () {
-    Route::resource('customers', 'Api\v1\CustomerController')->only(['index','store']);
-});
-Route::prefix('v1')->group(function () {
-    Route::resource('musics', 'Api\v1\MusicController')->only(['index','store','update','destroy']);
-});
-Route::prefix('admin')->group(function () {
-    Route::resource('manage-table', 'Admin\ManageTableControlle')->only(['index','store','update','destroy']);
-});
-
-
-

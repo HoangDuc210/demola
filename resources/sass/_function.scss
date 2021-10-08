@@ -1,6 +1,0 @@
-$coefficient: 0.625;
-$unit:rem;
-@function rem($pixel) {
-    $result: $pixel / 16;
-    @return $result+$unit;
-}
