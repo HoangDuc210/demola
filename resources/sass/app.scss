@@ -1,0 +1,11 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import 'font';
+@import '~bootstrap/scss/bootstrap';
+@import "~@coreui/coreui/scss/coreui.scss";
+@import "function";
+@import "style";
+@import "customer";

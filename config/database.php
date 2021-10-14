@@ -2,6 +2,15 @@
 
 use Illuminate\Support\Str;
 
+$db_url = env('DB_URL');
+$db_connection = env('DB_CONNECTION');
+$db_host = env('DB_HOST');
+$db_post = env('DB_PORT');
+$db_database = env('DB_DATABASE');
+$db_username = env('DB_USERNAME');
+$db_password = env('DB_PASSWORD');
+
+
 return [
 
     /*
@@ -15,7 +24,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'pgsql'),
+    'default' => env('DB_CONNECTION', $db_connection),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,11 +55,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'music'),
-            'username' => env('DB_USERNAME', 'root'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST', $db_host),
+            'port' => env('DB_PORT', $db_post),
+            'database' => env('DB_DATABASE', $db_database),
+            'username' => env('DB_USERNAME', $db_username),
+            'password' => env('DB_PASSWORD', $db_password),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
@@ -65,12 +74,12 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'url' => env('DATABASE_URL','postgres://ncvzholdqlfiau:d95404fe981f6322187325dfc404dd5535c7c50fc71793cf317c91e11af2ba8a@ec2-54-172-169-87.compute-1.amazonaws.com:5432/d5rp8npmc2ap7g'),
-            'host' => env('DB_HOST', 'ec2-54-172-169-87.compute-1.amazonaws.com'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'd5rp8npmc2ap7g'),
-            'username' => env('DB_USERNAME', 'ncvzholdqlfiau'),
-            'password' => env('DB_PASSWORD', 'd95404fe981f6322187325dfc404dd5535c7c50fc71793cf317c91e11af2ba8a'),
+            'url' => env('DATABASE_URL',$db_url),
+            'host' => env('DB_HOST', $db_host),
+            'port' => env('DB_PORT', $db_post),
+            'database' => env('DB_DATABASE', $db_database),
+            'username' => env('DB_USERNAME', $db_username),
+            'password' => env('DB_PASSWORD', $db_password),
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
