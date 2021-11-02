@@ -18,11 +18,11 @@ class News extends Model
             'ord',
             'tag',
             'count',
-           'parent',
-           'short_content',
-           'content',
-           'publish_by',
-           'create_time',
-           'update_time'
+            'parent',
+            'short_content',
+            'content',
+            'publish_by',
+            'created_at',
+            'updated_at'
     ];
 }

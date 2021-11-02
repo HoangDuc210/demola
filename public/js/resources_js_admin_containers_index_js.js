@@ -13229,11 +13229,25 @@ var _nav = [{
   _children: [{
     _tag: 'CSidebarNavItem',
     name: 'Danh sách bài viet',
-    to: '/admin/danh-sach-bai-viet'
+    to: '/admin/list-news'
   }, {
     _tag: 'CSidebarNavItem',
     name: 'Thêm bài viết',
-    to: '/admin/them-bai-viet'
+    to: '/admin/news/add'
+  }]
+}, {
+  _tag: 'CSidebarNavDropdown',
+  name: 'Danh mục tin tức',
+  route: '/admin/news_categories',
+  icon: 'cil-user',
+  _children: [{
+    _tag: 'CSidebarNavItem',
+    name: 'Danh sách danh mục',
+    to: '/admin/list-news_categories'
+  }, {
+    _tag: 'CSidebarNavItem',
+    name: 'Thêm danh mục',
+    to: '/admin/add/news_categories'
   }]
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_nav);
@@ -13685,14 +13699,29 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
+var News = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_DNews_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/DNews */ "./resources/js/admin/components/news/DNews.jsx"));
+});
 var ListNews = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_ListNews_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/ListNews */ "./resources/js/admin/components/news/ListNews.jsx"));
 });
 var AddNews = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_AddNews_AddNews_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/AddNews/AddNews */ "./resources/js/admin/components/news/AddNews/AddNews.jsx"));
 });
+var EditNews = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_EditNews_EditNews_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/EditNews/EditNews */ "./resources/js/admin/components/news/EditNews/EditNews.jsx"));
+});
+var NewsCategories = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_DNews_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/DNews */ "./resources/js/admin/components/news/DNews.jsx"));
+});
+var ListNewsCategories = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_categories_NewsCategories_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news_categories/NewsCategories */ "./resources/js/admin/components/news_categories/NewsCategories.jsx"));
+});
+var AddNewsCategories = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_categories_AddNewsCategory_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news_categories/AddNewsCategory */ "./resources/js/admin/components/news_categories/AddNewsCategory.jsx"));
+});
 var Test = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
-  return __webpack_require__.e(/*! import() */ "resources_js_components_Home_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./components/Home */ "./resources/js/components/Home.jsx"));
+  return __webpack_require__.e(/*! import() */ "resources_js_admin_components_news_Excel_ImportExcel_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/components/news/Excel/ImportExcel */ "./resources/js/admin/components/news/Excel/ImportExcel.jsx"));
 });
 var routesAdmin = [{
   path: "/admin/test",
@@ -13700,16 +13729,42 @@ var routesAdmin = [{
   name: "Danh sách tin tức",
   component: Test
 }, {
-  path: "/admin/danh-sach-bai-viet",
+  path: "/admin/news",
+  exact: true,
+  name: "Tin tức",
+  component: News
+}, {
+  path: "/admin/list-news",
   exact: true,
   name: "Danh sách tin tức",
   component: ListNews
 }, {
-  path: "/admin/them-bai-viet",
+  path: "/admin/news/add",
   exact: true,
   name: "Thêm tin tức",
   component: AddNews
-}];
+}, {
+  path: "/admin/news/edit/:slug",
+  exact: true,
+  name: "Sửa tin tức",
+  component: EditNews
+}, {
+  path: "/admin/news_categories",
+  exact: true,
+  name: "Tin tức",
+  component: NewsCategories
+}, {
+  path: "/admin/list-news_categories",
+  exact: true,
+  name: "Danh sách tin tức",
+  component: ListNewsCategories
+}, {
+  path: "/admin/add/news_categories",
+  exact: true,
+  name: "Thêm tin tức",
+  component: AddNewsCategories
+} // { path: "/admin/news/edit/news_categories:slug", exact: true, name: "Sửa tin tức", component: EditNewsCategories }
+];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routesAdmin);
 
 /***/ }),

@@ -1,0 +1,33 @@
+.form-data{
+    background: #fff;
+    padding: rem(15);
+    margin: rem(15);
+    .tab-pane {
+        padding: rem(15);
+    }
+    .form-group{
+        display: flex;
+
+        p{
+            width: 20%;
+        }
+    }
+}
+.news{
+    background: #fff;
+
+    .box-img{
+        width: rem(150);
+        overflow: hidden;
+        display: block;
+        img{
+            width: 100%;
+        }
+    }
+}
+
+.box-options{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

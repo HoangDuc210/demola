@@ -2774,12 +2774,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_hook_form__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-hook-form */ "./node_modules/react-hook-form/dist/index.esm.js");
 /* harmony import */ var yup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! yup */ "./node_modules/yup/es/index.js");
 /* harmony import */ var _hookform_resolvers_yup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @hookform/resolvers/yup */ "./node_modules/@hookform/resolvers/yup/dist/yup.module.js");
-/* harmony import */ var react_toastify_dist_inject_style__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-toastify/dist/inject-style */ "./node_modules/react-toastify/dist/inject-style.js");
+/* harmony import */ var react_toastify_dist_inject_style__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! react-toastify/dist/inject-style */ "./node_modules/react-toastify/dist/inject-style.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _coreui_react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @coreui/react */ "./node_modules/@coreui/react/es/index.js");
 /* harmony import */ var _tinymce_tinymce_react__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @tinymce/tinymce-react */ "./node_modules/@tinymce/tinymce-react/lib/es2015/main/ts/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _configs_getImage_getImgUrlPry__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../../configs/getImage/getImgUrlPry */ "./resources/js/admin/configs/getImage/getImgUrlPry.js");
+/* harmony import */ var _configs_getImage_geImage_scss__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../../configs/getImage/geImage.scss */ "./resources/js/admin/configs/getImage/geImage.scss");
+/* harmony import */ var _asset_images_default_jpg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../../../asset/images/default.jpg */ "./resources/js/asset/images/default.jpg");
+/* harmony import */ var _configs_xoa_dau__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../../../configs/xoa_dau */ "./resources/js/admin/configs/xoa_dau.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -2806,6 +2810,307 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
+
+
+
+function AddNews(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
+      _useState2 = _slicedToArray(_useState, 2),
+      content = _useState2[0],
+      setContent = _useState2[1];
+
+  var editorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_1__.useForm)({// resolver: yupResolver(validationSchema)
+  }),
+      register = _useForm.register,
+      handleSubmit = _useForm.handleSubmit,
+      errors = _useForm.formState.errors,
+      setValue = _useForm.setValue;
+
+  var setSlug = function setSlug(data) {
+    var a = (0,_configs_xoa_dau__WEBPACK_IMPORTED_MODULE_10__["default"])(data);
+    setValue("slug", a);
+  };
+
+  var handleEditorChange = function handleEditorChange(content) {
+    setContent(content);
+  };
+
+  console.log(content);
+
+  var onSubmit = function onSubmit(data) {
+    var act = data.act === true ? 1 : 0;
+    var hot = data.hot === true ? 1 : 0;
+    var img = data.img !== '' ? data.img.replace('[', '').replace(']', '') : '';
+    var dataNews = {
+      name: data.name,
+      slug: data.slug,
+      img: img,
+      act: act,
+      ord: data.ord,
+      hot: hot,
+      short_content: data.short_content,
+      content: content
+    };
+    console.log(dataNews);
+    var domain = window.location.origin;
+    var pathname = '/api/v1';
+    axios__WEBPACK_IMPORTED_MODULE_4___default().post(domain + pathname + "/news", dataNews).then(function (res) {
+      console.log(res.status);
+    });
+  };
+
+  var cancle = function cancle() {};
+
+  if (typeof window !== "undefined") {
+    (0,react_toastify_dist_inject_style__WEBPACK_IMPORTED_MODULE_12__.injectStyle)();
+  }
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("form", {
+      className: "form-data",
+      onSubmit: handleSubmit(onSubmit),
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabs, {
+        activeTab: "home",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNav, {
+          variant: "tabs",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
+              "data-tab": "home",
+              children: "Chi ti\u1EBFt"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
+              "data-tab": "profile",
+              children: "Kh\xE1c"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabContent, {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
+            "data-tab": "home",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "H\u1ECD v\xE0 t\xEAn"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                type: "text",
+                onChange: function onChange(e) {
+                  return setSlug(e.target.value);
+                },
+                name: "name",
+                className: "form-control",
+                ref: register
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "Slug"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                type: "text",
+                name: "slug",
+                className: "form-control",
+                ref: register
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "\u1EA2nh"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("label", {
+                id: "lfm",
+                "data-input": "thumbnail",
+                onClick: _configs_getImage_getImgUrlPry__WEBPACK_IMPORTED_MODULE_7__["default"],
+                "data-preview": "holder",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                  className: "c_box-img",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("img", {
+                    src: _asset_images_default_jpg__WEBPACK_IMPORTED_MODULE_9__["default"],
+                    alt: _asset_images_default_jpg__WEBPACK_IMPORTED_MODULE_9__["default"],
+                    className: "a_img"
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                  className: "c_choose_img",
+                  children: "Ch\u1ECDn file"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                  id: "thumbnail",
+                  ref: register,
+                  className: " d-none",
+                  type: "text",
+                  name: "img"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "K\xEDch ho\u1EA1t"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("label", {
+                className: "c-switch form-check-label c-switch-pill c-switch-success",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                  className: "c-switch-input c-form-check-input",
+                  type: "checkbox",
+                  id: "active",
+                  name: "act",
+                  defaultChecked: true,
+                  ref: register
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "c-switch-slider"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "S\u1EAFp x\u1EBFp"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                type: "text",
+                name: "ord",
+                className: "form-control",
+                ref: register
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "Tin n\u1ED5i b\u1EADt"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("label", {
+                className: "c-switch form-check-label c-switch-pill c-switch-success",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("input", {
+                  className: "c-switch-input c-form-check-input",
+                  type: "checkbox",
+                  id: "active",
+                  name: "hot",
+                  defaultChecked: true,
+                  ref: register
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("span", {
+                  className: "c-switch-slider"
+                })]
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
+            "data-tab": "profile",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "M\xF4 t\u1EA3 ng\u1EAFn"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("textarea", {
+                className: "form-control",
+                name: "short_content",
+                ref: register
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("p", {
+                children: "N\u1ED9i dung"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("div", {
+                className: "text-editor",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)(_tinymce_tinymce_react__WEBPACK_IMPORTED_MODULE_6__.Editor, {
+                  apiKey: "jo19uvonaswch30xn08p0dkh10t2df6z3o37903rn9669li5",
+                  initialValue: "",
+                  init: {
+                    selector: 'textarea.my-editor',
+                    relative_urls: false,
+                    mobile: {
+                      plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker textpattern noneditable help formatpainter pageembed charmap mentions quickbars linkchecker emoticons advtable'
+                    },
+                    plugins: ["advlist autolink lists link image charmap print preview hr anchor pagebreak", "searchreplace wordcount visualblocks visualchars code fullscreen", "insertdatetime media nonbreaking save table directionality", "emoticons template paste textpattern"],
+                    menubar: 'file edit view insert format tools table tc help',
+                    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment | insertfile image link | code',
+                    height: 800,
+                    fontsize_formats: "8px 9px 10px 11px 12px 14px 16px 18px 20px 24px 30px 36px 48px 60px 72px 96px",
+                    template_cdate_format: '[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]',
+                    template_mdate_format: '[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]',
+                    file_picker_callback: function file_picker_callback(callback, value, meta) {
+                      var x = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+                      var y = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+                      var domain = window.location.origin;
+                      var cmsURL = domain + '/laravel-filemanager?editor=' + meta.fieldname;
+
+                      if (meta.filetype == 'image') {
+                        cmsURL = cmsURL + "&type=Images";
+                      } else {
+                        cmsURL = cmsURL + "&type=Files";
+                      }
+
+                      tinyMCE.activeEditor.windowManager.openUrl({
+                        url: cmsURL,
+                        title: 'Filemanager',
+                        width: x * 0.8,
+                        height: y * 0.8,
+                        resizable: "yes",
+                        close_previous: "no",
+                        onMessage: function onMessage(api, message) {
+                          callback(message.content);
+                        }
+                      });
+                    }
+                  },
+                  onEditorChange: handleEditorChange
+                })
+              })]
+            })]
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_11__.jsx)("button", {
+        type: "submit",
+        className: "btn btn-primary btn-save-form",
+        children: "L\u01B0u"
+      })]
+    })
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddNews);
+
+/***/ }),
+
+/***/ "./resources/js/admin/configs/getImage/getImgUrlPry.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/admin/configs/getImage/getImgUrlPry.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+var lfm = function lfm(options) {
+  var domain = window.location.origin;
+  var button = document.getElementById("lfm");
+  var route_prefix = options && options.prefix ? options.prefix : '/laravel-filemanager';
+  var target_input = document.getElementById(button.getAttribute('data-input'));
+  var target_preview = document.getElementById(button.getAttribute('data-preview'));
+  window.open(route_prefix + '?type=' + 'image', 'FileManager', 'width=900,height=600');
+
+  window.SetUrl = function (items) {
+    var file_path = JSON.stringify(items);
+
+    if (file_path !== '') {
+      // set the value of the desired input to image url
+      target_input.value = file_path; // clear previous preview
+
+      var img = document.querySelector('.a_img');
+      img.setAttribute('src', items[0].url);
+    }
+
+    button.dispatchEvent(new Event('change'));
+  };
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (lfm);
+
+/***/ }),
+
+/***/ "./resources/js/admin/configs/xoa_dau.js":
+/*!***********************************************!*\
+  !*** ./resources/js/admin/configs/xoa_dau.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
 function xoa_dau(str) {
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
   str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
@@ -2828,276 +3133,46 @@ function xoa_dau(str) {
   return str;
 }
 
-function AddNews(props) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(),
-      _useState2 = _slicedToArray(_useState, 2),
-      content = _useState2[0],
-      setContent = _useState2[1];
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (xoa_dau);
 
-  var editorRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+/***/ }),
 
-  var _useForm = (0,react_hook_form__WEBPACK_IMPORTED_MODULE_1__.useForm)({// resolver: yupResolver(validationSchema)
-  }),
-      register = _useForm.register,
-      handleSubmit = _useForm.handleSubmit,
-      errors = _useForm.formState.errors,
-      setValue = _useForm.setValue;
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/admin/configs/getImage/geImage.scss":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/admin/configs/getImage/geImage.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
-  var setSlug = function setSlug(data) {
-    var a = xoa_dau(data);
-    setValue("slug", a);
-  };
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
 
-  var handleEditorChange = function handleEditorChange(e) {
-    setContent(e.target.getContent());
-  };
-
-  console.log(content);
-
-  var onSubmit = function onSubmit(data) {
-    var act = data.act === true ? 1 : 0;
-    var hot = data.hot === true ? 1 : 0;
-    var dataNews = {
-      name: data.name,
-      slug: data.slug,
-      act: act,
-      ord: data.ord,
-      hot: hot,
-      short_content: data.short_content,
-      content: content
-    };
-    console.log(dataNews); // const domain = window.location.origin;
-    // const pathname = '/api/v1';
-    // axios.post(domain + pathname + "/news", dataNews)
-    //     .then(res => {
-    //         console.log(res.status);
-    //     })
-  };
-
-  var cancle = function cancle() {};
-
-  if (typeof window !== "undefined") {
-    (0,react_toastify_dist_inject_style__WEBPACK_IMPORTED_MODULE_8__.injectStyle)();
-  }
-
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("form", {
-      className: "form-data",
-      onSubmit: handleSubmit(onSubmit),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-        className: "col-12",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabs, {
-          activeTab: "home",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNav, {
-            variant: "tabs",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
-                "data-tab": "home",
-                children: "Chi ti\u1EBFt"
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavItem, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CNavLink, {
-                "data-tab": "profile",
-                children: "Kh\xE1c"
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabContent, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
-              "data-tab": "home",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "H\u1ECD v\xE0 t\xEAn"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                  type: "text",
-                  onChange: function onChange(e) {
-                    return setSlug(e.target.value);
-                  },
-                  name: "name",
-                  className: "form-control",
-                  ref: register
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "Slug"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                  type: "text",
-                  name: "slug",
-                  className: "form-control",
-                  ref: register
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "K\xEDch ho\u1EA1t"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
-                  className: "c-switch form-check-label c-switch-pill c-switch-success",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                    className: "c-switch-input c-form-check-input",
-                    type: "checkbox",
-                    id: "active",
-                    name: "act",
-                    defaultChecked: true,
-                    ref: register
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-                    className: "c-switch-slider"
-                  })]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "S\u1EAFp x\u1EBFp"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                  type: "text",
-                  name: "ord",
-                  className: "form-control",
-                  ref: register
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "Tin n\u1ED5i b\u1EADt"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("label", {
-                  className: "c-switch form-check-label c-switch-pill c-switch-success",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("input", {
-                    className: "c-switch-input c-form-check-input",
-                    type: "checkbox",
-                    id: "active",
-                    name: "hot",
-                    defaultChecked: true,
-                    ref: register
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("span", {
-                    className: "c-switch-slider"
-                  })]
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(_coreui_react__WEBPACK_IMPORTED_MODULE_5__.CTabPane, {
-              "data-tab": "profile",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "M\xF4 t\u1EA3 ng\u1EAFn"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("textarea", {
-                  className: "form-control",
-                  name: "short_content",
-                  ref: register
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
-                className: "form-group",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("label", {
-                  htmlFor: "",
-                  children: "N\u1ED9i dung"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
-                  className: "text-editor",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_tinymce_tinymce_react__WEBPACK_IMPORTED_MODULE_6__.Editor, {
-                    apiKey: "jo19uvonaswch30xn08p0dkh10t2df6z3o37903rn9669li5",
-                    initialValue: "<p>This is the initial content of the editor</p>",
-                    init: {
-                      plugins: "print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons",
-                      imagetools_cors_hosts: ["picsum.photos"],
-                      menubar: "file edit view insert format tools table help",
-                      toolbar: "undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl",
-                      toolbar_sticky: true,
-                      autosave_ask_before_unload: true,
-                      autosave_interval: "30s",
-                      autosave_prefix: "{path}{query}-{id}-",
-                      autosave_restore_when_empty: false,
-                      autosave_retention: "2m",
-                      image_advtab: true,
-                      link_list: [{
-                        title: "My page 1",
-                        value: "http://www.tinymce.com"
-                      }, {
-                        title: "My page 2",
-                        value: "http://www.moxiecode.com"
-                      }],
-                      image_list: [{
-                        title: "My page 1",
-                        value: "http://www.tinymce.com"
-                      }, {
-                        title: "My page 2",
-                        value: "http://www.moxiecode.com"
-                      }],
-                      image_class_list: [{
-                        title: "None",
-                        value: ""
-                      }, {
-                        title: "Some class",
-                        value: "class-name"
-                      }],
-                      importcss_append: true,
-                      file_picker_callback: function file_picker_callback(callback, value, meta) {
-                        /* Provide file and text for the link dialog */
-                        if (meta.filetype === "file") {
-                          callback("", {
-                            text: "My text"
-                          });
-                        }
-                        /* Provide image and alt text for the image dialog */
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "#lfm {\n  display: flex;\n  align-items: center;\n  cursor: pointer;\n}\n#lfm .c_box-img {\n  width: 100px;\n  height: 100px;\n  overflow: hidden;\n  display: flex;\n  align-items: center;\n}\n#lfm .c_box-img img {\n  width: 100%;\n}\n#lfm .c_choose_img {\n  margin-left: 15px;\n  background: #0188d6;\n  padding: 7px 10px;\n  color: #fff;\n  width: 100px;\n}", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
 
-                        if (meta.filetype === "image") {
-                          callback("", {
-                            alt: "My alt text"
-                          });
-                        }
-                        /* Provide alternative source and posted for the media dialog */
+/***/ }),
 
+/***/ "./resources/js/asset/images/default.jpg":
+/*!***********************************************!*\
+  !*** ./resources/js/asset/images/default.jpg ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-                        if (meta.filetype === "media") {
-                          callback("", {
-                            source2: "",
-                            poster: ""
-                          });
-                        }
-                      },
-                      templates: [{
-                        title: "New Table",
-                        description: "creates a new table",
-                        content: '<div class="mceTmpl"><table width="98%%"  border="0" cellspacing="0" cellpadding="0"><tr><th scope="col"> </th><th scope="col"> </th></tr><tr><td> </td><td> </td></tr></table></div>'
-                      }, {
-                        title: "Starting my story",
-                        description: "A cure for writers block",
-                        content: "Once upon a time..."
-                      }, {
-                        title: "New list with dates",
-                        description: "New List with dates",
-                        content: '<div class="mceTmpl"><span class="cdate">cdate</span><br /><span class="mdate">mdate</span><h2>My List</h2><ul><li></li><li></li></ul></div>'
-                      }],
-                      template_cdate_format: "[Date Created (CDATE): %m/%d/%Y : %H:%M:%S]",
-                      template_mdate_format: "[Date Modified (MDATE): %m/%d/%Y : %H:%M:%S]",
-                      height: 600,
-                      image_caption: true,
-                      quickbars_selection_toolbar: "bold italic | quicklink h2 h3 blockquote quickimage quicktable",
-                      noneditable_noneditable_class: "mceNonEditable",
-                      toolbar_mode: "sliding",
-                      contextmenu: "link image imagetools table",
-                      content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }"
-                    },
-                    onEditorChange: handleEditorChange
-                  })
-                })]
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("button", {
-          type: "submit",
-          className: "btn btn-primary btn-save-form",
-          children: "L\u01B0u"
-        })]
-      })
-    })
-  });
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AddNews);
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/default.jpg?465b847d85187bb675087f68a95e0571");
 
 /***/ }),
 
@@ -10564,6 +10639,36 @@ const Controller = (props) => {
 
 //# sourceMappingURL=index.esm.js.map
 
+
+/***/ }),
+
+/***/ "./resources/js/admin/configs/getImage/geImage.scss":
+/*!**********************************************************!*\
+  !*** ./resources/js/admin/configs/getImage/geImage.scss ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_geImage_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!../../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./geImage.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[3]!./resources/js/admin/configs/getImage/geImage.scss");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_geImage_scss__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_3_geImage_scss__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 

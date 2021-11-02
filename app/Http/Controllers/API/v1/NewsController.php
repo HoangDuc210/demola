@@ -7,6 +7,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Models\News;
 use App\Http\Resources\News\NewsResouce;
 use App\Http\Resources\News\NewsCollection;
+use Illuminate\Support\Facades\DB;
 
 class NewsController extends BaseController
 {
@@ -18,33 +19,27 @@ class NewsController extends BaseController
     }
 
     public function store(Request $request){
-
-        // $news = new News();
-
-        // $news->name = $request->name;
-        // $news->slug = $request->slug;
-        // $news->act = $request->act;
-        // $news->ord = $request->ord;
-        // $news->hot = $request->hot;
-        // $news->short_content = $request->short_content;
-        // $news->content = $request->content;
-
-        // $news->save();
-
         $input = $request->all();
         $news = News::create($input);
 
         return $this->sendResponse(new NewsResouce($news), 'Post updated.');
 
     }
+    public function show($slug)
+    {
+        $news = DB::table('news')->where('slug', '=', $slug)->get();
+
+        if (is_null($news)) {
+            return $this->sendError('Product not found.');
+        }
+
+        return $this->sendResponse(new NewsResouce($news), 'Post updated.');
+    }
 
     public function update(Request $request,$id)
     {
-
-        $news=News::find($id);
-        $news->act = $request->act;
-
-        $news->update();
+        $news = News::find($id);
+        $news->update($request->all());
 
         return $this->sendResponse(new NewsResouce($news), 'Post updated.');
     }

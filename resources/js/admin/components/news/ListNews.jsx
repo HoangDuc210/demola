@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { CButton, CLink, CModal, CModalBody, CModalFooter, CModalHeader, CModalTitle, CSwitch } from "@coreui/react";
 import ReactPaginate from "react-paginate";
+import imgDefault from '../../../asset/images/default.jpg'
 
 function ListNews(props) {
 
@@ -42,7 +43,8 @@ function ListNews(props) {
     const updateActive = (id) => {
         var remember = document.getElementById("active");
 
-        const update = (id, data) => {
+        const update = (data) => {
+
             axios.put(domain + pathname + "/news/" + id, data)
                 .then(res => {
                     console.log(res.status);
@@ -52,13 +54,13 @@ function ListNews(props) {
             const data = {
                 act: 1
             }
-            update(id, data);
+            update(data);
         } else {
 
             const data = {
                 act: 0
             }
-            update(id, data);
+            update(data);
         }
     }
     const setDelete = (id) => {
@@ -94,21 +96,24 @@ function ListNews(props) {
                                         <th scope="col">Ảnh</th>
                                         <th scope="col">Kích hoạt</th>
                                         <th scope='col' className='text-center'>
-                                            <CLink to={"/admin/them-bai-viet"} title='Thêm bài viết'>
+                                            <CLink to={"/admin/news/add"} title='Thêm bài viết'>
                                                 <i className="fa fa-plus-square"></i>
                                             </CLink>
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        news.map((ne, index) => {
+                                    {news.map((ne, index) => {
+                                            const imgOb = JSON.parse(ne.img);
+
+                                            const img = imgOb !== null ? imgOb.url : imgDefault;
+
                                             return (
                                                 <tr scope="row" key={index}>
                                                     <td>{ne.id}</td>
-                                                    <td><CLink to={"/edit/" + ne.slug} title={ne.name}>{ne.name}</CLink></td>
-                                                    <td><CLink to={"/edit/" + ne.slug} title={ne.slug}>{ne.slug}</CLink></td>
-                                                    <td><CLink to={"/edit/" + ne.slug} title={ne.name}><img src={ne.img} alt={ne.name} /></CLink></td>
+                                                    <td><CLink to={"/admin/news/edit" + ne.slug} title={ne.name}>{ne.name}</CLink></td>
+                                                    <td><CLink to={"/admin/news/edit" + ne.slug} title={ne.slug}>{ne.slug}</CLink></td>
+                                                    <td><CLink className="box-img" to={"/admin/news/edit" + ne.slug} title={ne.name}><img src={img} alt={ne.name} /></CLink></td>
                                                     <td className='text-center'>
                                                         <CSwitch
                                                             id='active'
@@ -118,13 +123,15 @@ function ListNews(props) {
                                                             shape="pill"
                                                         />
                                                     </td>
-                                                    <td className='text-center d-flex'>
-                                                        <CLink to={"/admin/sua-bai-viet/" + ne.slug} title={ne.name}>
-                                                            <i className="fa fa-edit"></i>
-                                                        </CLink>
-                                                        <button onClick={() => setDelete(ne.id)} >
-                                                            <i className="fa fa-trash"></i>
-                                                        </button>
+                                                    <td className='text-center '>
+                                                        <div className='box-options'>
+                                                            <CLink to={"/admin/news/edit/" + ne.slug} title={ne.name}>
+                                                                <i className="fa fa-edit"></i>
+                                                            </CLink>
+                                                            <button className='btn-0' onClick={() => setDelete(ne.id)} >
+                                                                <i className="fa fa-trash"></i>
+                                                            </button>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             )

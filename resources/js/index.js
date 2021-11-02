@@ -14,6 +14,8 @@ if (typeof window !== "undefined") {
 
 // Containers
 const Admin = React.lazy(() => import("./admin/containers/TheLayout"));
+const Webs = React.lazy(() => import("./web/containers/TheLayout"));
+
 class App extends Component {
     render() {
         return (
@@ -21,6 +23,7 @@ class App extends Component {
                 <BrowserRouter >
                     <React.Suspense fallback={loading} >
                         <Switch >
+                            <Route path="/" name="Trang chủ" render={(props) => < Webs {...props} />} />
                             <Route path="/admin" name="Admin" render={(props) => < Admin {...props} />} />
                         </Switch>
                     </React.Suspense >

@@ -11,12 +11,30 @@ const _nav =  [
       {
         _tag: 'CSidebarNavItem',
         name: 'Danh sách bài viet',
-        to: '/admin/danh-sach-bai-viet',
+        to: '/admin/list-news',
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Thêm bài viết',
-        to: '/admin/them-bai-viet',
+        to: '/admin/news/add',
+      }
+    ],
+  },
+  {
+    _tag: 'CSidebarNavDropdown',
+    name: 'Danh mục tin tức',
+    route: '/admin/news_categories',
+    icon: 'cil-user',
+    _children: [
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Danh sách danh mục',
+        to: '/admin/list-news_categories',
+      },
+      {
+        _tag: 'CSidebarNavItem',
+        name: 'Thêm danh mục',
+        to: '/admin/add/news_categories',
       }
     ],
   }

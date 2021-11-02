@@ -2240,6 +2240,9 @@ if (typeof window !== "undefined") {
 var Admin = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
   return __webpack_require__.e(/*! import() */ "resources_js_admin_containers_index_js").then(__webpack_require__.bind(__webpack_require__, /*! ./admin/containers/TheLayout */ "./resources/js/admin/containers/TheLayout.js"));
 });
+var Webs = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.lazy(function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_web_containers_TheLayout_jsx").then(__webpack_require__.bind(__webpack_require__, /*! ./web/containers/TheLayout */ "./resources/js/web/containers/TheLayout.jsx"));
+});
 
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
@@ -2259,14 +2262,20 @@ var App = /*#__PURE__*/function (_Component) {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.BrowserRouter, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react__WEBPACK_IMPORTED_MODULE_0__.Suspense, {
             fallback: loading,
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Switch, {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
+                path: "/",
+                name: "Trang ch\u1EE7",
+                render: function render(props) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Webs, _objectSpread({}, props));
+                }
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Route, {
                 path: "/admin",
                 name: "Admin",
                 render: function render(props) {
                   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Admin, _objectSpread({}, props));
                 }
-              })
+              })]
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_toastify__WEBPACK_IMPORTED_MODULE_5__.ToastContainer, {
@@ -44168,7 +44177,7 @@ function _setPrototypeOf(o, p) {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
@@ -44255,7 +44264,7 @@ function _setPrototypeOf(o, p) {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_admin_containers_index_js":1,"resources_js_admin_components_news_ListNews_jsx":1,"resources_js_admin_components_news_AddNews_AddNews_jsx":1,"resources_js_components_Home_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_admin_containers_index_js":1,"resources_js_web_containers_TheLayout_jsx":1,"resources_js_admin_components_news_DNews_jsx":1,"resources_js_admin_components_news_ListNews_jsx":1,"resources_js_admin_components_news_AddNews_AddNews_jsx":1,"resources_js_admin_components_news_EditNews_EditNews_jsx":1,"resources_js_admin_components_news_categories_NewsCategories_jsx":1,"resources_js_admin_components_news_categories_AddNewsCategory_jsx":1,"resources_js_admin_components_news_Excel_ImportExcel_jsx":1,"resources_js_web_components_Index_jsx":1,"resources_js_web_components_blogs_DetailBlog_jsx":1,"resources_js_web_containers_404_jsx":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

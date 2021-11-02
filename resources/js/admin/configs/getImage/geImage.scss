@@ -1,0 +1,22 @@
+#lfm{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    .c_box-img{
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        img{
+            width: 100%;
+        }
+    }
+    .c_choose_img{
+        margin-left: 15px;
+        background: rgb(1, 136, 214);
+        padding: 7px 10px;
+        color: #fff;
+        width: 100px;
+    }
+}
